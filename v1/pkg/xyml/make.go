@@ -8,6 +8,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+// NewBinaryNode returns a new binary typed YAML node with the given content.
 func NewBinaryNode(v []byte) *yaml.Node {
 	return &yaml.Node{
 		Kind:  yaml.ScalarNode,
@@ -16,6 +17,7 @@ func NewBinaryNode(v []byte) *yaml.Node {
 	}
 }
 
+// NewBoolNode returns a new boolean typed YAML node with the given value.
 func NewBoolNode(v bool) *yaml.Node {
 	return &yaml.Node{
 		Kind:  yaml.ScalarNode,
@@ -24,6 +26,7 @@ func NewBoolNode(v bool) *yaml.Node {
 	}
 }
 
+// NewFloatNode returns a new float typed YAML node with the given value.
 func NewFloatNode(val float64, rep byte, prec int) *yaml.Node {
 	return &yaml.Node{
 		Kind:  yaml.ScalarNode,
@@ -32,6 +35,7 @@ func NewFloatNode(val float64, rep byte, prec int) *yaml.Node {
 	}
 }
 
+// NewIntNode returns a new int typed YAML node with the given value.
 func NewIntNode(val int64, base int) *yaml.Node {
 	return &yaml.Node{
 		Kind:  yaml.ScalarNode,
@@ -40,14 +44,17 @@ func NewIntNode(val int64, base int) *yaml.Node {
 	}
 }
 
+// NewFloatNode returns a new null typed YAML node.
 func NewNullNode() *yaml.Node {
 	return &yaml.Node{Kind: yaml.ScalarNode, Tag: TagNil}
 }
 
+// NewStringNode returns a new string typed YAML node with the given value.
 func NewStringNode(v string) *yaml.Node {
 	return &yaml.Node{Kind: yaml.ScalarNode, Tag: TagString, Value: v}
 }
 
+// NewFloatNode returns a new float typed YAML node with the given value.
 func NewTimestampNode(v time.Time) *yaml.Node {
 	return &yaml.Node{
 		Kind:  yaml.ScalarNode,
@@ -56,6 +63,7 @@ func NewTimestampNode(v time.Time) *yaml.Node {
 	}
 }
 
+// NewMapNode returns a new mapping typed YAML node presized to the given size.
 func NewMapNode(size int) *yaml.Node {
 	return &yaml.Node{
 		Kind:    yaml.MappingNode,
@@ -64,6 +72,8 @@ func NewMapNode(size int) *yaml.Node {
 	}
 }
 
+// NewMapNode returns a new ordered map typed YAML node presized to the given
+// size.
 func NewOrderedMapNode(size int) *yaml.Node {
 	return &yaml.Node{
 		Kind:    yaml.MappingNode,
@@ -72,6 +82,7 @@ func NewOrderedMapNode(size int) *yaml.Node {
 	}
 }
 
+// NewPairsNode returns a new pairs typed YAML node presized to the given size.
 func NewPairsNode(size int) *yaml.Node {
 	return &yaml.Node{
 		Kind:    yaml.SequenceNode,
@@ -80,6 +91,7 @@ func NewPairsNode(size int) *yaml.Node {
 	}
 }
 
+// NewSetNode returns a new set typed YAML node presized to the given size.
 func NewSetNode(size int) *yaml.Node {
 	return &yaml.Node{
 		Kind:    yaml.SequenceNode,
@@ -88,6 +100,7 @@ func NewSetNode(size int) *yaml.Node {
 	}
 }
 
+// NewMapNode returns a new sequence typed YAML node presized to the given size.
 func NewSequenceNode(size int) *yaml.Node {
 	return &yaml.Node{
 		Kind:    yaml.SequenceNode,
