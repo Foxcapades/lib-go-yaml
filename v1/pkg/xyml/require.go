@@ -2,6 +2,7 @@ package xyml
 
 import (
 	"fmt"
+
 	"gopkg.in/yaml.v3"
 )
 
@@ -18,8 +19,10 @@ func RequireBinary(y *yaml.Node) error {
 		if hasPos(y) {
 			return fmt.Errorf(errWithPos, TagBinary, y.Tag, y.Line, y.Column)
 		}
+
 		return fmt.Errorf(errNoPos, TagBinary, y.Tag)
 	}
+
 	return nil
 }
 
@@ -29,8 +32,10 @@ func RequireBool(y *yaml.Node) error {
 		if hasPos(y) {
 			return fmt.Errorf(errWithPos, TagBool, y.Tag, y.Line, y.Column)
 		}
+
 		return fmt.Errorf(errNoPos, TagBool, y.Tag)
 	}
+
 	return nil
 }
 
@@ -40,8 +45,10 @@ func RequireFloat(y *yaml.Node) error {
 		if hasPos(y) {
 			return fmt.Errorf(errWithPos, TagFloat, y.Tag, y.Line, y.Column)
 		}
+
 		return fmt.Errorf(errNoPos, TagFloat, y.Tag)
 	}
+
 	return nil
 }
 
@@ -51,8 +58,10 @@ func RequireInt(y *yaml.Node) error {
 		if hasPos(y) {
 			return fmt.Errorf(errWithPos, TagInt, y.Tag, y.Line, y.Column)
 		}
+
 		return fmt.Errorf(errNoPos, TagInt, y.Tag)
 	}
+
 	return nil
 }
 
@@ -63,9 +72,11 @@ func RequireMap(y *yaml.Node) error {
 			return fmt.Errorf(errKindPos, kindToString(yaml.MappingNode),
 				kindToString(y.Kind), y.Line, y.Column)
 		}
+
 		return fmt.Errorf(errKind, kindToString(yaml.MappingNode),
 			kindToString(y.Kind))
 	}
+
 	return nil
 }
 
@@ -75,8 +86,10 @@ func RequireNilType(y *yaml.Node) error {
 		if hasPos(y) {
 			return fmt.Errorf(errWithPos, TagNil, y.Tag, y.Line, y.Column)
 		}
+
 		return fmt.Errorf(errNoPos, TagNil, y.Tag)
 	}
+
 	return nil
 }
 
@@ -86,8 +99,10 @@ func RequireOrderedMap(y *yaml.Node) error {
 		if hasPos(y) {
 			return fmt.Errorf(errWithPos, TagOrderedMap, y.Tag, y.Line, y.Column)
 		}
+
 		return fmt.Errorf(errNoPos, TagOrderedMap, y.Tag)
 	}
+
 	return nil
 }
 
@@ -97,8 +112,10 @@ func RequirePairs(y *yaml.Node) error {
 		if hasPos(y) {
 			return fmt.Errorf(errWithPos, TagPairs, y.Tag, y.Line, y.Column)
 		}
+
 		return fmt.Errorf(errNoPos, TagPairs, y.Tag)
 	}
+
 	return nil
 }
 
@@ -109,9 +126,11 @@ func RequireScalar(y *yaml.Node) error {
 			return fmt.Errorf(errKindPos, kindToString(yaml.ScalarNode),
 				kindToString(y.Kind), y.Line, y.Column)
 		}
+
 		return fmt.Errorf(errKind, kindToString(yaml.ScalarNode),
 			kindToString(y.Kind))
 	}
+
 	return nil
 }
 
@@ -122,9 +141,11 @@ func RequireSequence(y *yaml.Node) error {
 			return fmt.Errorf(errKindPos, kindToString(yaml.SequenceNode),
 				kindToString(y.Kind), y.Line, y.Column)
 		}
+
 		return fmt.Errorf(errKind, kindToString(yaml.SequenceNode),
 			kindToString(y.Kind))
 	}
+
 	return nil
 }
 
@@ -134,11 +155,12 @@ func RequireTimestamp(y *yaml.Node) error {
 		if hasPos(y) {
 			return fmt.Errorf(errWithPos, TagTimestamp, y.Tag, y.Line, y.Column)
 		}
+
 		return fmt.Errorf(errNoPos, TagTimestamp, y.Tag)
 	}
+
 	return nil
 }
-
 
 // RequireString returns an error if the given node is not of type string.
 func RequireString(y *yaml.Node) error {
@@ -146,8 +168,10 @@ func RequireString(y *yaml.Node) error {
 		if hasPos(y) {
 			return fmt.Errorf(errWithPos, TagString, y.Tag, y.Line, y.Column)
 		}
+
 		return fmt.Errorf(errNoPos, TagString, y.Tag)
 	}
+
 	return nil
 }
 
@@ -168,5 +192,6 @@ func kindToString(kind yaml.Kind) string {
 	case yaml.AliasNode:
 		return "alias"
 	}
+
 	return "unknown"
 }

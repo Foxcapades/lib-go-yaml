@@ -8,6 +8,10 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+// ScalarToYamlNode converts the given scalar node to a YAML node.
+//
+// Returns an error if the given value cannot be converted to a YAML scalar
+// node.
 func ScalarToYamlNode(val interface{}) (*yaml.Node, error) {
 	if val == nil {
 		return NewNullNode(), nil
@@ -65,6 +69,11 @@ func ScalarToYamlNode(val interface{}) (*yaml.Node, error) {
 	return nil, fmt.Errorf("cannot convert type %s to a scalar node", v.Type())
 }
 
+// MapToYamlNode converts the given map to a YAML node.
+//
+// Returns an error if the given value is not a map, if the map key type is not
+// a scalar value, or if the map contains a value which cannot be automatically
+// converted to a YAML node (such as a struct value).
 func MapToYamlNode(val interface{}) (*yaml.Node, error) {
 	if val == nil {
 		return NewMapNode(0), nil
@@ -72,19 +81,20 @@ func MapToYamlNode(val interface{}) (*yaml.Node, error) {
 
 	v := reflect.ValueOf(val)
 
-	switch v.Kind() {
-	case reflect.Map:
+	if v.Kind() == reflect.Map {
 		out := NewMapNode(v.Len())
 		it := v.MapRange()
+
 		for it.Next() {
 			if key, err := ScalarToYamlNode(it.Key().Interface()); err != nil {
 				return nil, err
 			} else if val, err := ToYamlNode(it.Value().Interface()); err != nil {
 				return nil, err
 			} else {
-				_ =MapAppendNode(out, key, val)
+				_ = MapAppendNode(out, key, val)
 			}
 		}
+
 		return out, nil
 	}
 
@@ -99,6 +109,11 @@ func MapToYamlNode(val interface{}) (*yaml.Node, error) {
 	return nil, fmt.Errorf("cannot convert type %s to a map node", v.Type())
 }
 
+// SliceToYamlNode converts the given slice or array value into a YAML sequence.
+//
+// Returns an error if the given value is not an array or slice, or if the
+// array/slice contains a value that cannot be automatically converted to a YAML
+// node (such as a struct value).
 func SliceToYamlNode(val interface{}) (*yaml.Node, error) {
 	if val == nil {
 		return NewSequenceNode(0), nil
@@ -106,10 +121,10 @@ func SliceToYamlNode(val interface{}) (*yaml.Node, error) {
 
 	v := reflect.ValueOf(val)
 
-	switch v.Kind() {
-	case reflect.Array, reflect.Slice:
+	if v.Kind() == reflect.Array || v.Kind() == reflect.Slice {
 		ln := v.Len()
 		out := NewSequenceNode(ln)
+
 		for i := 0; i < ln; i++ {
 			if val, err := ToYamlNode(v.Index(i).Interface()); err != nil {
 				return nil, err
@@ -117,6 +132,7 @@ func SliceToYamlNode(val interface{}) (*yaml.Node, error) {
 				_ = SequenceAppendNode(out, val)
 			}
 		}
+
 		return out, nil
 	}
 
@@ -131,6 +147,11 @@ func SliceToYamlNode(val interface{}) (*yaml.Node, error) {
 	return nil, fmt.Errorf("cannot convert type %s to a sequence node", v.Type())
 }
 
+// ToYamlNode converts arbitrary typed data to a YAML node.
+//
+// Note: This method is a shorthand call for all 3 of ScalarToYamlNode,
+// SliceToYamlNode, and MapToYamlNode.  As such it follows the same rules and
+// cannot handle user defined types such as structs.
 func ToYamlNode(val interface{}) (*yaml.Node, error) {
 	if val == nil {
 		return NewNullNode(), nil

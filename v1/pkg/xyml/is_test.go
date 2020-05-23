@@ -1,10 +1,12 @@
 package xyml_test
 
 import (
-	"github.com/Foxcapades/lib-go-yaml/v1/pkg/xyml"
-	. "github.com/smartystreets/goconvey/convey"
 	"testing"
 	"time"
+
+	"github.com/Foxcapades/lib-go-yaml/v1/pkg/xyml"
+
+	. "github.com/smartystreets/goconvey/convey"
 )
 
 func TestIsBinary(t *testing.T) {
@@ -90,6 +92,3 @@ func TestIsTimestamp(t *testing.T) {
 		So(xyml.IsTimestamp(xyml.NewTimestampNode(time.Now())), ShouldBeTrue)
 	})
 }
-
-
-

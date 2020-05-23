@@ -2,9 +2,10 @@ package xyml
 
 import (
 	"encoding/base64"
-	"gopkg.in/yaml.v3"
 	"strconv"
 	"time"
+
+	"gopkg.in/yaml.v3"
 )
 
 func NewBinaryNode(v []byte) *yaml.Node {

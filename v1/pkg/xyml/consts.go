@@ -1,6 +1,6 @@
 package xyml
 
-// YAML type tags
+// YAML type tags.
 const (
 	TagBinary    = "!!binary"
 	TagBool      = "!!bool"

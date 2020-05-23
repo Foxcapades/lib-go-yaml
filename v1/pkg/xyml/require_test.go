@@ -1,9 +1,11 @@
-package xyml
+package xyml_test
 
 import (
-	. "github.com/smartystreets/goconvey/convey"
 	"testing"
 	"time"
+
+	. "github.com/Foxcapades/lib-go-yaml/v1/pkg/xyml"
+	. "github.com/smartystreets/goconvey/convey"
 )
 
 func TestRequireBinary(t *testing.T) {
@@ -149,5 +151,3 @@ func TestRequireTimestamp(t *testing.T) {
 		So(RequireTimestamp(tmp), ShouldNotBeNil)
 	})
 }
-
-

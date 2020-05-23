@@ -8,6 +8,7 @@ func MapAppendNode(y, k, v *yaml.Node) error {
 	if err := RequireMap(y); err != nil {
 		return err
 	}
+
 	y.Content = append(y.Content, k, v)
 	return nil
 }
@@ -18,6 +19,7 @@ func MapAppend(y *yaml.Node, k, v interface{}) error {
 	if err := RequireMap(y); err != nil {
 		return err
 	}
+
 	if key, err := ScalarToYamlNode(k); err != nil {
 		return err
 	} else if val, err := ToYamlNode(v); err != nil {
@@ -25,6 +27,7 @@ func MapAppend(y *yaml.Node, k, v interface{}) error {
 	} else {
 		y.Content = append(y.Content, key, val)
 	}
+
 	return nil
 }
 
@@ -34,6 +37,7 @@ func SequenceAppendNode(y, v *yaml.Node) error {
 	if err := RequireSequence(y); err != nil {
 		return err
 	}
+
 	y.Content = append(y.Content, v)
 	return nil
 }
@@ -42,10 +46,12 @@ func SequenceAppend(y *yaml.Node, v interface{}) error {
 	if err := RequireSequence(y); err != nil {
 		return err
 	}
+
 	if val, err := ToYamlNode(v); err != nil {
 		return err
 	} else {
 		y.Content = append(y.Content, val)
 	}
+
 	return nil
 }

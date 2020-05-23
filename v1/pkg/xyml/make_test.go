@@ -2,11 +2,13 @@ package xyml_test
 
 import (
 	"encoding/base64"
-	"github.com/Foxcapades/lib-go-yaml/v1/pkg/xyml"
-	. "github.com/smartystreets/goconvey/convey"
-	"gopkg.in/yaml.v3"
 	"testing"
 	"time"
+
+	"github.com/Foxcapades/lib-go-yaml/v1/pkg/xyml"
+	"gopkg.in/yaml.v3"
+
+	. "github.com/smartystreets/goconvey/convey"
 )
 
 func TestNewBinaryNode(t *testing.T) {
@@ -68,4 +70,3 @@ func TestNewSetNode(t *testing.T) {
 		So(test.Tag, ShouldEqual, xyml.TagSet)
 	})
 }
-
