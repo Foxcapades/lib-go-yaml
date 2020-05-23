@@ -54,7 +54,8 @@ func NewStringNode(v string) *yaml.Node {
 	return &yaml.Node{Kind: yaml.ScalarNode, Tag: TagString, Value: v}
 }
 
-// NewFloatNode returns a new float typed YAML node with the given value.
+// NewTimestampNode returns a new timestamp typed YAML node with the given
+// value.
 func NewTimestampNode(v time.Time) *yaml.Node {
 	return &yaml.Node{
 		Kind:  yaml.ScalarNode,
@@ -72,8 +73,8 @@ func NewMapNode(size int) *yaml.Node {
 	}
 }
 
-// NewMapNode returns a new ordered map typed YAML node presized to the given
-// size.
+// NewOrderedMapNode returns a new ordered map typed YAML node presized to the
+// given size.
 func NewOrderedMapNode(size int) *yaml.Node {
 	return &yaml.Node{
 		Kind:    yaml.MappingNode,
@@ -100,7 +101,7 @@ func NewSetNode(size int) *yaml.Node {
 	}
 }
 
-// NewMapNode returns a new sequence typed YAML node presized to the given size.
+// NewSequenceNode returns a new sequence typed YAML node presized to the given size.
 func NewSequenceNode(size int) *yaml.Node {
 	return &yaml.Node{
 		Kind:    yaml.SequenceNode,
