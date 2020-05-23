@@ -2,7 +2,7 @@ package xyml_test
 
 import (
 	"encoding/base64"
-	"github.com/Foxcapades/lib-go-yaml/pkg/xyml"
+	"github.com/Foxcapades/lib-go-yaml/v1/pkg/xyml"
 	. "github.com/smartystreets/goconvey/convey"
 	"gopkg.in/yaml.v3"
 	"testing"

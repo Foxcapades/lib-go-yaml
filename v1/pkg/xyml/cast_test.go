@@ -3,7 +3,7 @@ package xyml_test
 import (
 	"testing"
 
-	"github.com/Foxcapades/lib-go-yaml/pkg/xyml"
+	"github.com/Foxcapades/lib-go-yaml/v1/pkg/xyml"
 
 	"gopkg.in/yaml.v3"
 

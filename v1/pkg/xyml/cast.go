@@ -82,7 +82,7 @@ func MapToYamlNode(val interface{}) (*yaml.Node, error) {
 			} else if val, err := ToYamlNode(it.Value().Interface()); err != nil {
 				return nil, err
 			} else {
-				MapAppendNode(out, key, val)
+				_ =MapAppendNode(out, key, val)
 			}
 		}
 		return out, nil
@@ -114,7 +114,7 @@ func SliceToYamlNode(val interface{}) (*yaml.Node, error) {
 			if val, err := ToYamlNode(v.Index(i).Interface()); err != nil {
 				return nil, err
 			} else {
-				SequenceAppendNode(out, val)
+				_ = SequenceAppendNode(out, val)
 			}
 		}
 		return out, nil
