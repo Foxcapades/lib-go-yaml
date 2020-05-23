@@ -1,0 +1,14 @@
+= YAML Utils
+
+A set of utilities for constructing and dealing with YAML nodes.
+Built on top of https://github.com/go-yaml/yaml/tree/v3[go-yaml v3].
+
+.Example
+[source, go]
+----
+  foo := map[string][]string{
+    "bar": {"fizz", "buzz"}
+  }
+  node, _ := xyml.ToYamlNode(foo)
+  _ = xyml.MapAppend(node, "hi", "bye")
+----
