@@ -126,11 +126,13 @@ func SliceToYamlNode(val interface{}) (*yaml.Node, error) {
 		out := NewSequenceNode(ln)
 
 		for i := 0; i < ln; i++ {
-			if val, err := ToYamlNode(v.Index(i).Interface()); err != nil {
+			val, err := ToYamlNode(v.Index(i).Interface())
+
+			if err != nil {
 				return nil, err
-			} else {
-				_ = SequenceAppendNode(out, val)
 			}
+
+			_ = SequenceAppendNode(out, val)
 		}
 
 		return out, nil

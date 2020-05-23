@@ -42,6 +42,8 @@ func SequenceAppendNode(y, v *yaml.Node) error {
 	return nil
 }
 
+// SequenceAppend converts the given value (v) to a YAML node, then appends it
+// to the given list node (y).
 func SequenceAppend(y *yaml.Node, v interface{}) error {
 	if err := RequireSequence(y); err != nil {
 		return err

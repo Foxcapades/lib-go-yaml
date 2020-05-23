@@ -44,7 +44,7 @@ func NewIntNode(val int64, base int) *yaml.Node {
 	}
 }
 
-// NewFloatNode returns a new null typed YAML node.
+// NewNullNode returns a new null typed YAML node.
 func NewNullNode() *yaml.Node {
 	return &yaml.Node{Kind: yaml.ScalarNode, Tag: TagNil}
 }

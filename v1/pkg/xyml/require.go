@@ -52,7 +52,7 @@ func RequireFloat(y *yaml.Node) error {
 	return nil
 }
 
-// RequireBool returns an error if the given node is not of type int.
+// RequireInt returns an error if the given node is not of type int.
 func RequireInt(y *yaml.Node) error {
 	if !IsInt(y) {
 		if hasPos(y) {
