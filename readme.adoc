@@ -1,7 +1,7 @@
 = YAML Utils
 
 image:https://travis-ci.org/Foxcapades/lib-go-yaml.svg?branch=master["Build Status", link="https://travis-ci.org/Foxcapades/lib-go-yaml"]
-image:https://img.shields.io/github/v/tag/Foxcapades/lib-go-yaml?label=version[GitHub tag (latest SemVer)]
+image:https://img.shields.io/github/v/tag/Foxcapades/lib-go-yaml?label=version[Latest Tag, link=https://github.com/Foxcapades/lib-go-yaml/tags]
 image:https://goreportcard.com/badge/github.com/Foxcapades/lib-go-yaml[Go Report Card, link=https://goreportcard.com/report/github.com/Foxcapades/lib-go-yaml]
 image:https://codecov.io/gh/Foxcapades/lib-go-yaml/branch/master/graph/badge.svg[Code Coverage, link=https://codecov.io/gh/Foxcapades/lib-go-yaml]
 
