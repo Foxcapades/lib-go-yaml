@@ -155,8 +155,17 @@ func SliceToYamlNode(val interface{}) (*yaml.Node, error) {
 // SliceToYamlNode, and MapToYamlNode.  As such it follows the same rules and
 // cannot handle user defined types such as structs.
 func ToYamlNode(val interface{}) (*yaml.Node, error) {
+
 	if val == nil {
 		return NewNullNode(), nil
+	}
+
+	if tmp, ok := val.(*yaml.Node); ok {
+		return tmp, nil
+	}
+
+	if tmp, ok := val.(Marshaler); ok {
+		return tmp.ToYAML()
 	}
 
 	v := reflect.ValueOf(val)

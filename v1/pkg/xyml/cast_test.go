@@ -1,6 +1,7 @@
 package xyml_test
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/Foxcapades/lib-go-yaml/v1/pkg/xyml"
@@ -238,11 +239,46 @@ func TestSliceToYamlNode(t *testing.T) {
 
 func TestToYamlNode(t *testing.T) {
 	Convey("ToYamlNode", t, func() {
-		val, err := xyml.ToYamlNode(nil)
+		Convey("Using builtin types", func() {
+			val, err := xyml.ToYamlNode(nil)
 
-		So(err, ShouldBeNil)
-		So(val.Kind, ShouldEqual, yaml.ScalarNode)
-		So(val.Tag, ShouldEqual, xyml.TagNil)
-		So(val.Content, ShouldBeEmpty)
+			So(err, ShouldBeNil)
+			So(val.Kind, ShouldEqual, yaml.ScalarNode)
+			So(val.Tag, ShouldEqual, xyml.TagNil)
+			So(val.Content, ShouldBeEmpty)
+		})
+
+		Convey("Using a Marshaler implementation", func() {
+			t1 := derp{out: xyml.NewStringNode("foo")}
+			out, err := xyml.ToYamlNode(t1)
+
+			So(err, ShouldBeNil)
+			So(out, ShouldPointTo, t1.out)
+
+			t1 = derp{err: errors.New("flump")}
+			out, err = xyml.ToYamlNode(t1)
+
+			So(err, ShouldNotBeNil)
+			So(err.Error(), ShouldEqual, "flump")
+			So(out, ShouldBeNil)
+		})
+
+		Convey("Using a YAML node", func() {
+			t1 := xyml.NewStringNode("hi")
+			out, err := xyml.ToYamlNode(t1)
+
+			So(err, ShouldBeNil)
+			So(out, ShouldPointTo, t1)
+		})
 	})
 }
+
+type derp struct{
+	out *yaml.Node
+	err error
+}
+
+func (d derp) ToYAML() (*yaml.Node, error) {
+	return d.out, d.err
+}
+

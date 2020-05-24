@@ -39,3 +39,17 @@ func TestSequenceAppend(t *testing.T) {
 		So(xyml.SequenceAppend(node, struct{}{}), ShouldNotBeNil)
 	})
 }
+
+func TestMapAppendNode(t *testing.T) {
+	Convey("MapAppendNode", t, func() {
+		So(xyml.MapAppendNode(xyml.NewStringNode("hi"), xyml.NewNullNode(),
+			xyml.NewNullNode()), ShouldNotBeNil)
+	})
+}
+
+func TestSequenceAppendNode(t *testing.T) {
+	Convey("SequenceAppendNode", t, func() {
+		So(xyml.SequenceAppendNode(xyml.NewStringNode("hi"), xyml.NewNullNode()),
+			ShouldNotBeNil)
+	})
+}
