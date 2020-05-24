@@ -8,6 +8,13 @@ image:https://codecov.io/gh/Foxcapades/lib-go-yaml/branch/master/graph/badge.svg
 A set of utilities for constructing and dealing with YAML nodes.
 Built on top of https://github.com/go-yaml/yaml/tree/v3[go-yaml v3].
 
+[source, sh-session]
+----
+go get github.com/Foxcapades/lib-go-yaml
+----
+
+---
+
 .Example
 [source, go]
 ----
