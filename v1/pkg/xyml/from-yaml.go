@@ -143,6 +143,15 @@ const (
 	errParseTimePos = "failed to parse timestamp node @ %d:%d: %s"
 )
 
+// ToString attempts to parse the given YAML node as a string.
+func ToString(y *yaml.Node) (string, error) {
+	if err := RequireString(y); err != nil {
+		return "", err
+	}
+
+	return y.Value, nil
+}
+
 // ToTime attempts to parse the given YAML node as a timestamp using the given
 // format.
 func ToTime(y *yaml.Node, format string) (time.Time, error) {

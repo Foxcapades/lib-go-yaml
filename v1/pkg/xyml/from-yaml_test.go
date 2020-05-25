@@ -234,6 +234,21 @@ func TestToInt(t *testing.T) {
 	})
 }
 
+func TestToString(t *testing.T) {
+	Convey("ToString", t, func() {
+		Convey("with a non-string node", func() {
+			_, err := xyml.ToString(xyml.NewNullNode())
+			So(err, ShouldNotBeNil)
+		})
+
+		Convey("with a string node", func() {
+			val, err := xyml.ToString(xyml.NewStringNode("hi"))
+			So(err, ShouldBeNil)
+			So(val, ShouldEqual, "hi")
+		})
+	})
+}
+
 func TestToTime(t *testing.T) {
 	Convey("ToTime", t, func() {
 		Convey("With a non-binary node", func() {
