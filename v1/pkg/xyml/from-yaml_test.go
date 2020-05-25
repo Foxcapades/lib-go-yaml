@@ -35,9 +35,9 @@ func TestToBinary(t *testing.T) {
 			})
 			Convey("and no position", func() {
 				raw := &yaml.Node{
-					Kind:   yaml.ScalarNode,
-					Tag:    xyml.TagBinary,
-					Value:  "hello",
+					Kind:  yaml.ScalarNode,
+					Tag:   xyml.TagBinary,
+					Value: "hello",
 				}
 
 				val, err := xyml.ToBinary(raw)
@@ -82,9 +82,9 @@ func TestToBoolean(t *testing.T) {
 			})
 			Convey("and no position", func() {
 				raw := &yaml.Node{
-					Kind:   yaml.ScalarNode,
-					Tag:    xyml.TagBool,
-					Value:  "hello",
+					Kind:  yaml.ScalarNode,
+					Tag:   xyml.TagBool,
+					Value: "hello",
 				}
 
 				val, err := xyml.ToBoolean(raw)
@@ -104,9 +104,9 @@ func TestToBoolean(t *testing.T) {
 
 				for _, str := range validTrue {
 					raw := &yaml.Node{
-						Kind:        yaml.ScalarNode,
-						Tag:         xyml.TagBool,
-						Value:       str,
+						Kind:  yaml.ScalarNode,
+						Tag:   xyml.TagBool,
+						Value: str,
 					}
 
 					val, err := xyml.ToBoolean(raw)
@@ -125,9 +125,9 @@ func TestToBoolean(t *testing.T) {
 
 				for _, str := range validFalse {
 					raw := &yaml.Node{
-						Kind:        yaml.ScalarNode,
-						Tag:         xyml.TagBool,
-						Value:       str,
+						Kind:  yaml.ScalarNode,
+						Tag:   xyml.TagBool,
+						Value: str,
 					}
 
 					val, err := xyml.ToBoolean(raw)
@@ -166,9 +166,9 @@ func TestToFloat(t *testing.T) {
 			})
 			Convey("and no position", func() {
 				raw := &yaml.Node{
-					Kind:   yaml.ScalarNode,
-					Tag:    xyml.TagFloat,
-					Value:  "hello",
+					Kind:  yaml.ScalarNode,
+					Tag:   xyml.TagFloat,
+					Value: "hello",
 				}
 
 				val, err := xyml.ToFloat(raw)
@@ -213,9 +213,9 @@ func TestToInt(t *testing.T) {
 			})
 			Convey("and no position", func() {
 				raw := &yaml.Node{
-					Kind:   yaml.ScalarNode,
-					Tag:    xyml.TagInt,
-					Value:  "hello",
+					Kind:  yaml.ScalarNode,
+					Tag:   xyml.TagInt,
+					Value: "hello",
 				}
 
 				val, err := xyml.ToInt(raw, 10)
@@ -258,9 +258,9 @@ func TestToTime(t *testing.T) {
 			})
 			Convey("and no position", func() {
 				raw := &yaml.Node{
-					Kind:   yaml.ScalarNode,
-					Tag:    xyml.TagTimestamp,
-					Value:  "hello",
+					Kind:  yaml.ScalarNode,
+					Tag:   xyml.TagTimestamp,
+					Value: "hello",
 				}
 
 				_, err := xyml.ToTime(raw, time.RFC3339)

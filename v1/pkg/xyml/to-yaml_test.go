@@ -273,7 +273,7 @@ func TestToYamlNode(t *testing.T) {
 	})
 }
 
-type derp struct{
+type derp struct {
 	out *yaml.Node
 	err error
 }
@@ -281,4 +281,3 @@ type derp struct{
 func (d derp) ToYAML() (*yaml.Node, error) {
 	return d.out, d.err
 }
-

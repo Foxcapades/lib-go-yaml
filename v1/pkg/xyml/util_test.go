@@ -67,7 +67,6 @@ func TestMapForEach(t *testing.T) {
 	})
 }
 
-
 func TestSequenceForEach(t *testing.T) {
 	Convey("SequenceForEach", t, func() {
 		Convey("given a sequence node", func() {
@@ -116,7 +115,7 @@ func TestSequenceForEach(t *testing.T) {
 
 		Convey("given a non-sequence node", func() {
 			test := xyml.NewNullNode()
-			So(xyml.SequenceForEach(test, func(*yaml.Node) error {return nil}),
+			So(xyml.SequenceForEach(test, func(*yaml.Node) error { return nil }),
 				ShouldNotBeNil)
 		})
 	})
