@@ -1,6 +1,7 @@
 package xyml_test
 
 import (
+	"gopkg.in/yaml.v3"
 	"testing"
 	"time"
 
@@ -65,6 +66,15 @@ func TestRequireMap(t *testing.T) {
 		tmp.Line = 1
 		tmp.Column = 2
 		So(RequireMap(tmp), ShouldNotBeNil)
+
+		raw := &yaml.Node{Kind: yaml.DocumentNode}
+		So(RequireMap(raw), ShouldNotBeNil)
+
+		raw = &yaml.Node{Kind: yaml.AliasNode}
+		So(RequireMap(raw), ShouldNotBeNil)
+
+		raw = &yaml.Node{Kind: 69}
+		So(RequireMap(raw), ShouldNotBeNil)
 	})
 }
 
