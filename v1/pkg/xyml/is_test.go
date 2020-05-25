@@ -40,7 +40,7 @@ func TestIsInt(t *testing.T) {
 func TestIsMap(t *testing.T) {
 	Convey("IsMap", t, func() {
 		So(xyml.IsMap(xyml.NewNullNode()), ShouldBeFalse)
-		So(xyml.IsMap(xyml.NewOrderedMapNode(0)), ShouldBeTrue)
+		So(xyml.IsMap(xyml.NewMapNode(0)), ShouldBeTrue)
 	})
 }
 

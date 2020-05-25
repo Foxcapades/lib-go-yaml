@@ -34,7 +34,7 @@ func IsNilType(y *yaml.Node) bool {
 
 // IsOrderedMap returns whether the given YAML node is an ordered map node.
 func IsOrderedMap(y *yaml.Node) bool {
-	return IsMap(y) && y.Tag == TagOrderedMap
+	return IsSequence(y) && y.Tag == TagOrderedMap
 }
 
 // IsPairs returns whether the given YAML node is a pairs node.

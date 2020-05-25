@@ -77,7 +77,7 @@ func NewMapNode(size int) *yaml.Node {
 // given size.
 func NewOrderedMapNode(size int) *yaml.Node {
 	return &yaml.Node{
-		Kind:    yaml.MappingNode,
+		Kind:    yaml.SequenceNode,
 		Tag:     TagOrderedMap,
 		Content: make([]*yaml.Node, 0, size*2),
 	}

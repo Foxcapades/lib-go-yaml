@@ -50,7 +50,7 @@ func TestNewTimestampNode(t *testing.T) {
 func TestNewOrderedMapNode(t *testing.T) {
 	Convey("NewOrderedMapNode", t, func() {
 		test := xyml.NewOrderedMapNode(0)
-		So(test.Kind, ShouldEqual, yaml.MappingNode)
+		So(test.Kind, ShouldEqual, yaml.SequenceNode)
 		So(test.Tag, ShouldEqual, xyml.TagOrderedMap)
 	})
 }
