@@ -2,10 +2,9 @@ package xyml
 
 import (
 	"fmt"
+	"gopkg.in/yaml.v3"
 	"reflect"
 	"strconv"
-
-	"gopkg.in/yaml.v3"
 )
 
 // ScalarToYamlNode converts the given scalar node to a YAML node.
