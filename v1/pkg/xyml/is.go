@@ -4,22 +4,22 @@ import "gopkg.in/yaml.v3"
 
 // IsBinary returns whether the given YAML node is a binary node.
 func IsBinary(y *yaml.Node) bool {
-	return IsScalar(y) && y.Tag == TagBinary
+	return IsScalar(y) && y.LongTag() == TagBinary
 }
 
 // IsBool returns whether the given YAML node is a boolean node.
 func IsBool(y *yaml.Node) bool {
-	return IsScalar(y) && y.Tag == TagBool
+	return IsScalar(y) && y.LongTag() == TagBool
 }
 
 // IsFloat returns whether the given YAML node is a float node.
 func IsFloat(y *yaml.Node) bool {
-	return IsScalar(y) && y.Tag == TagFloat
+	return IsScalar(y) && y.LongTag() == TagFloat
 }
 
 // IsInt returns whether the given YAML node is an int node.
 func IsInt(y *yaml.Node) bool {
-	return IsScalar(y) && y.Tag == TagInt
+	return IsScalar(y) && y.LongTag() == TagInt
 }
 
 // IsMap returns whether the given YAML node is a map node.
@@ -29,17 +29,17 @@ func IsMap(y *yaml.Node) bool {
 
 // IsNilType returns whether the given YAML node is a nil typed node.
 func IsNilType(y *yaml.Node) bool {
-	return IsScalar(y) && y.Tag == TagNil
+	return IsScalar(y) && y.LongTag() == TagNil
 }
 
 // IsOrderedMap returns whether the given YAML node is an ordered map node.
 func IsOrderedMap(y *yaml.Node) bool {
-	return IsSequence(y) && y.Tag == TagOrderedMap
+	return IsSequence(y) && y.LongTag() == TagOrderedMap
 }
 
 // IsPairs returns whether the given YAML node is a pairs node.
 func IsPairs(y *yaml.Node) bool {
-	return IsSequence(y) && y.Tag == TagPairs
+	return IsSequence(y) && y.LongTag() == TagPairs
 }
 
 // IsScalar returns whether the given YAML node is a scalar type.
@@ -54,10 +54,10 @@ func IsSequence(y *yaml.Node) bool {
 
 // IsTimestamp returns whether the given YAML node is a timestamp node.
 func IsTimestamp(y *yaml.Node) bool {
-	return IsScalar(y) && y.Tag == TagTimestamp
+	return IsScalar(y) && y.LongTag() == TagTimestamp
 }
 
 // IsString returns whether the given YAML node is a string node.
 func IsString(y *yaml.Node) bool {
-	return IsScalar(y) && y.Tag == TagString
+	return IsScalar(y) && y.LongTag() == TagString
 }
