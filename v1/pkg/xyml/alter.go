@@ -20,7 +20,7 @@ func MapAppend(y *yaml.Node, k, v interface{}) error {
 		return err
 	}
 
-	if key, err := ScalarToYamlNode(k); err != nil {
+	if key, err := ToYamlNode(k); err != nil {
 		return err
 	} else if val, err := ToYamlNode(v); err != nil {
 		return err
